@@ -19,6 +19,9 @@ const addPin = document.getElementById("add-pin-number");
 const addBtn = document.getElementById("add-money-btn");
 
 // Casho Out
+const withdrawAmount = document.getElementById("withdraw-amount");
+const cashOutPin = document.getElementById("cash-out-pin");
+const cashOutBtn = document.getElementById("cash-out-btn");
 
 // Container Cards Array
 const cardIDArray = [
@@ -72,9 +75,7 @@ function validateData(amountStr, amount, pin) {
     return alert("Plese enter amount!");
   } else if (amount <= 0) {
     return alert("Plese enter valid amount!");
-  }
-
-  if (pin.length === 0) {
+  } else if (pin.length === 0) {
     return alert("Please enter your pin");
   } else if (pin.length !== 4) {
     return alert("Pin Number Must be 4 Digit");
@@ -99,10 +100,26 @@ function addMoney(e) {
 }
 
 // Cash Out Function
-function chashOutMoney() {}
+function chashOutMoney(e) {
+  e.preventDefault();
+
+  const amountVal = parseInt(withdrawAmount.value);
+  const pinVal = cashOutPin.value;
+
+  validateData(withdrawAmount.value, amountVal, pinVal);
+
+  if (myPin === pinVal) {
+    mainBalanceEl.textContent = mainBalance - amountVal;
+  } else {
+    return alert("Invalid Credential!");
+  }
+}
 
 // Event Handler
 cardContainer.addEventListener("click", colorEffects);
 
 // Add Money Event Handler
 addBtn.addEventListener("click", addMoney);
+
+// Add Money Event Handler
+cashOutBtn.addEventListener("click", chashOutMoney);
