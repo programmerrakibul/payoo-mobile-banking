@@ -8,9 +8,17 @@ const transferMoneyContainer = document.getElementById(
 );
 const getBonusContainer = document.getElementById("get-bonus-container");
 const payBillContainer = document.getElementById("pay-bill-container");
+const mainBalanceEl = document.getElementById("main-balance");
+const mainBalance = parseInt(mainBalanceEl.textContent);
+const myPin = "1234";
 
 // Add Money
+// const addAccNumber = document.getElementById("add-account-number");
+const addAmount = document.getElementById("add-amount");
+const addPin = document.getElementById("add-pin-number");
+const addBtn = document.getElementById("add-money-btn");
 
+// Casho Out
 
 // Container Cards Array
 const cardIDArray = [
@@ -58,5 +66,43 @@ function colorEffects(e) {
   }
 }
 
+// Function for input validation
+function validateData(amountStr, amount, pin) {
+  if (amountStr === "") {
+    return alert("Plese enter amount!");
+  } else if (amount <= 0) {
+    return alert("Plese enter valid amount!");
+  }
+
+  if (pin.length === 0) {
+    return alert("Please enter your pin");
+  } else if (pin.length !== 4) {
+    return alert("Pin Number Must be 4 Digit");
+  }
+}
+
+// Add Money Function
+function addMoney(e) {
+  e.preventDefault();
+
+  const amountVal = parseInt(addAmount.value);
+  const pinVal = addPin.value;
+
+  validateData(addAmount.value, amountVal, pinVal);
+
+  if (myPin === pinVal) {
+    mainBalanceEl.textContent = mainBalance + amountVal;
+    // console.log(mainBalance + amountVal);
+  } else {
+    return alert("Invalid Credential!");
+  }
+}
+
+// Cash Out Function
+function chashOutMoney() {}
+
 // Event Handler
 cardContainer.addEventListener("click", colorEffects);
+
+// Add Money Event Handler
+addBtn.addEventListener("click", addMoney);
