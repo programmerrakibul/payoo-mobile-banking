@@ -1,4 +1,5 @@
 // DOM Selectors
+const logOutBtn = document.getElementById("log-out-btn");
 const cardContainer = document.getElementById("card-container");
 const cardContainers = document.getElementById("card-containers").children;
 const addMoneyContainer = document.getElementById("add-money-container");
@@ -123,3 +124,8 @@ addBtn.addEventListener("click", addMoney);
 
 // Add Money Event Handler
 cashOutBtn.addEventListener("click", chashOutMoney);
+
+// Logout Listener
+logOutBtn.addEventListener("click", () => {
+  location.href = "./index.html";
+});
