@@ -79,27 +79,27 @@
           <!-- Add Money Card -->
           <div
             id="add-money-card"
-            class="border border-[#0874F2] text-[#0874F2] bg-[#0874f20d] text-center rounded-xl px-2.5 py-5 cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
+            class="min-h-[118px] flex flex-col justify-center items-center text-center border border-[#0874F2] text-[#0874F2] bg-[#0874f20d] rounded-xl cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
           >
-            <img src="./assets/wallet1.png" alt="" class="mx-auto" />
+            <img src="./assets/wallet1.png" alt="" />
             <h5 class="opacity-70 text-sm font-semibold mt-2">Add Money</h5>
           </div>
 
           <!-- Cashout Card -->
           <div
             id="chashout-card"
-            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5 cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
+            class="min-h-[118px] flex flex-col justify-center items-center text-center border border-[#0808081a] rounded-xl cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
           >
-            <img src="./assets/send1.png" alt="" class="mx-auto" />
+            <img src="./assets/send1.png" alt="" />
             <h5 class="opacity-70 text-sm mt-2 font-semibold">Cashout</h5>
           </div>
 
           <!-- Transfer Money Card -->
           <div
             id="transfer-money-card"
-            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5 cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
+            class="min-h-[118px] flex flex-col justify-center items-center text-center border border-[#0808081a] rounded-xl cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
           >
-            <img src="./assets/money1.png" alt="" class="mx-auto" />
+            <img src="./assets/money1.png" alt="" />
             <h5 class="opacity-70 text-sm mt-2 font-semibold">
               Transfer Money
             </h5>
@@ -108,27 +108,27 @@
           <!-- Get Bonus Card -->
           <div
             id="bonus-card"
-            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5 cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
+            class="min-h-[118px] flex flex-col justify-center items-center text-center border border-[#0808081a] rounded-xl cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
           >
-            <img src="./assets/bonus1.png" alt="" class="mx-auto" />
+            <img src="./assets/bonus1.png" alt="" />
             <h5 class="opacity-70 text-sm mt-2 font-semibold">Get Bonus</h5>
           </div>
 
           <!-- Pay Bill Card -->
           <div
             id="pay-bill-card"
-            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5 cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
+            class="min-h-[118px] flex flex-col justify-center items-center text-center border border-[#0808081a] rounded-xl cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
           >
-            <img src="./assets/purse1.png" alt="" class="mx-auto" />
+            <img src="./assets/purse1.png" alt="" />
             <h5 class="opacity-70 text-sm mt-2 font-semibold">Pay Bill</h5>
           </div>
 
           <!-- Transactions Card -->
           <div
             id="transaction-card"
-            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5 cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
+            class="min-h-[118px] flex flex-col justify-center items-center text-center border border-[#0808081a] rounded-xl cursor-default hover:bg-[#0874f20d] hover:border-[#0874F2] hover:text-[#0874F2] transition-all"
           >
-            <img src="./assets/transaction1.png" alt="" class="mx-auto" />
+            <img src="./assets/transaction1.png" alt="" />
             <h5 class="opacity-70 text-sm mt-2 font-semibold">Transactions</h5>
           </div>
         </div>
@@ -243,8 +243,11 @@
 
           <!-- Pin Number -->
           <div class="mb-4">
-            <label for="cash-out-pin" class="font-medium opacity-70">Pin Number</label>
-            <input id="cash-out-pin"
+            <label for="cash-out-pin" class="font-medium opacity-70"
+              >Pin Number</label
+            >
+            <input
+              id="cash-out-pin"
               type="text"
               placeholder="Enter 4 digit pin number"
               class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
