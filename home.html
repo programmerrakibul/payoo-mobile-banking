@@ -135,275 +135,280 @@
       </div>
     </div>
 
-    <!-- Add Money Container -->
-    <div id="add-money-container" class="max-w-lg w-4/5 mx-auto">
-      <h3 class="mb-3 font-semibold text-lg opacity-90">Add Money</h3>
+    <!-- Card Containers -->
+    <div id="card-containers">
+      <!-- Add Money Container -->
+      <div id="add-money-container" class="max-w-lg w-4/5 mx-auto">
+        <h3 class="mb-3 font-semibold text-lg opacity-90">Add Money</h3>
 
-      <!-- Add Money Form -->
-      <form action="" class="bg-white p-8 rounded-3xl w-full">
-        <!-- Bank -->
-        <div class="mb-4">
-          <label for="banks" class="font-medium opacity-70"
-            >Select A Bank</label
+        <!-- Add Money Form -->
+        <form action="" class="bg-white p-8 rounded-3xl w-full">
+          <!-- Bank -->
+          <div class="mb-4">
+            <label for="banks" class="font-medium opacity-70"
+              >Select A Bank</label
+            >
+            <select
+              id="banks"
+              class="select w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none font-light"
+              aria-label="Select a Bank"
+            >
+              <option disabled selected>Select Bank</option>
+              <option>AB Bank</option>
+              <option>Sonali Bank</option>
+              <option>Rupali Bank</option>
+              <option>Janata Bank</option>
+            </select>
+          </div>
+
+          <!-- Account Number -->
+          <div class="mb-4">
+            <label for="account-number" class="font-medium opacity-70"
+              >Bank Account Number</label
+            >
+            <input
+              id="account-number"
+              type="text"
+              placeholder="Enter 11 digit account number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Amount to Add -->
+          <div class="mb-4">
+            <label for="add-amount" class="font-medium opacity-70"
+              >Amount to Add</label
+            >
+            <input
+              id="add-amount"
+              type="text"
+              placeholder="Add Amount to withdraw"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Pin Number -->
+          <div class="mb-4">
+            <label for="pin-number" class="font-medium opacity-70"
+              >Pin Number</label
+            >
+            <input
+              id="pin-number"
+              type="text"
+              placeholder="Enter 4 digit pin number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+          <button
+            id="add-money-btn"
+            type="submit"
+            class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
           >
-          <select
-            id="banks"
-            class="select w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none font-light"
-            aria-label="Select a Bank"
+            Add Money
+          </button>
+        </form>
+      </div>
+
+      <!-- Cash Out Container -->
+      <div id="cash-out-container" class="max-w-lg w-4/5 mx-auto" hidden>
+        <h3 class="mb-3 font-semibold text-lg opacity-90">Cash Out</h3>
+
+        <!-- Cash Out Form -->
+        <form action="" class="bg-white p-8 rounded-3xl w-full">
+          <!-- Agent Number -->
+          <div class="mb-4">
+            <label for="agent-number" class="font-medium opacity-70"
+              >Agent Number</label
+            >
+            <input
+              id="agent-number"
+              type="text"
+              placeholder="Enter 11 digit number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Amount to Withdraw -->
+          <div class="mb-4">
+            <label for="withdraw-amount" class="font-medium opacity-70"
+              >Amount</label
+            >
+            <input
+              id="withdraw-amount"
+              type="text"
+              placeholder="Enter amount to withdraw"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Pin Number -->
+          <div class="mb-4">
+            <label class="font-medium opacity-70">Pin Number</label>
+            <input
+              type="text"
+              placeholder="Enter 4 digit pin number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Withdraw Button -->
+          <button
+            id="cash-out-btn"
+            type="submit"
+            class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
           >
-            <option disabled selected>Select Bank</option>
-            <option>AB Bank</option>
-            <option>Sonali Bank</option>
-            <option>Rupali Bank</option>
-            <option>Janata Bank</option>
-          </select>
-        </div>
+            Withdraw Money
+          </button>
+        </form>
+      </div>
 
-        <!-- Account Number -->
-        <div class="mb-4">
-          <label for="account-number" class="font-medium opacity-70"
-            >Bank Account Number</label
+      <!-- Transfer Money Container -->
+      <div id="transfer-money-container" class="max-w-lg w-4/5 mx-auto" hidden>
+        <h3 class="mb-3 font-semibold text-lg opacity-90">Transfer Money</h3>
+
+        <!-- Transfer Money Form -->
+        <form action="" class="bg-white p-8 rounded-3xl w-full">
+          <!-- User Account Number -->
+          <div class="mb-4">
+            <label for="user-account-number" class="font-medium opacity-70"
+              >User Account Number</label
+            >
+            <input
+              id="user-account-number"
+              type="text"
+              placeholder="Enter 11 digit number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Amount to Add -->
+          <div class="mb-4">
+            <label for="transfer-amount" class="font-medium opacity-70"
+              >Amount</label
+            >
+            <input
+              id="transfer-amount"
+              type="text"
+              placeholder="Enter amount to transfer"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Pin Number -->
+          <div class="mb-4">
+            <label class="font-medium opacity-70">Pin Number</label>
+            <input
+              type="text"
+              placeholder="Enter 4 digit pin number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Transfer Money Button -->
+          <button
+            id="transfer-money-btn"
+            type="submit"
+            class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
           >
-          <input
-            id="account-number"
-            type="text"
-            placeholder="Enter 11 digit account number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
+            Add Money
+          </button>
+        </form>
+      </div>
 
-        <!-- Amount to Add -->
-        <div class="mb-4">
-          <label for="add-amount" class="font-medium opacity-70"
-            >Amount to Add</label
+      <!-- Get Bonus -->
+      <div id="get-bonus-container" class="max-w-lg w-4/5 mx-auto" hidden>
+        <h3 class="mb-3 font-semibold text-lg opacity-90">Get Bonus</h3>
+
+        <!-- Get Bonus Form -->
+        <form action="" class="bg-white p-8 rounded-3xl w-full">
+          <!-- Coupon -->
+          <div class="mb-4">
+            <label class="font-medium opacity-70">Enter Bonus Coupon</label>
+            <input
+              type="text"
+              placeholder="Enter your coupon"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Get Bonus Button -->
+          <button
+            id="bonus-btn"
+            type="submit"
+            class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
           >
-          <input
-            id="add-amount"
-            type="text"
-            placeholder="Add Amount to withdraw"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
+            Get Bonus
+          </button>
+        </form>
+      </div>
 
-        <!-- Pin Number -->
-        <div class="mb-4">
-          <label for="pin-number" class="font-medium opacity-70"
-            >Pin Number</label
+      <!-- Pay Bill Container -->
+      <div id="pay-bill-container" class="max-w-lg w-4/5 mx-auto" hidden>
+        <h3 class="mb-3 font-semibold text-lg opacity-90">Pay Bill</h3>
+
+        <!-- Pay Bill Form -->
+        <form action="" class="bg-white p-8 rounded-3xl w-full">
+          <!-- Biller -->
+          <div class="mb-4">
+            <label for="pay" class="font-medium opacity-70"
+              >Select To Pay</label
+            >
+            <select
+              id="pay"
+              class="select w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none font-light"
+              aria-label="Select To Pay"
+            >
+              <option disabled selected>Select To Pay</option>
+              <option>Gas Bill</option>
+              <option>Bank Deposit</option>
+              <option>Electricity Bill</option>
+            </select>
+          </div>
+
+          <!-- Enter account number -->
+          <div class="mb-4">
+            <label for="biller-account-number" class="font-medium opacity-70"
+              >Enter account number</label
+            >
+            <input
+              id="biller-account-number"
+              type="text"
+              placeholder="Enter account number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Amount to Pay -->
+          <div class="mb-4">
+            <label for="pay-amount" class="font-medium opacity-70"
+              >Amount to Pay</label
+            >
+            <input
+              id="pay-amount"
+              type="text"
+              placeholder="Add Amount to pay"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+
+          <!-- Pin Number -->
+          <div class="mb-4">
+            <label class="font-medium opacity-70">Pin Number</label>
+            <input
+              type="text"
+              placeholder="Enter 4 digit pin number"
+              class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+            />
+          </div>
+          <button
+            id="pay-bill-btn"
+            type="submit"
+            class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
           >
-          <input
-            id="pin-number"
-            type="text"
-            placeholder="Enter 4 digit pin number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-        <button
-          id="add-money-btn"
-          type="submit"
-          class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
-        >
-          Add Money
-        </button>
-      </form>
-    </div>
-
-    <!-- Cash Out Container -->
-    <div id="cash-out-container" class="max-w-lg w-4/5 mx-auto" hidden>
-      <h3 class="mb-3 font-semibold text-lg opacity-90">Cash Out</h3>
-
-      <!-- Cash Out Form -->
-      <form action="" class="bg-white p-8 rounded-3xl w-full">
-        <!-- Agent Number -->
-        <div class="mb-4">
-          <label for="agent-number" class="font-medium opacity-70"
-            >Agent Number</label
-          >
-          <input
-            id="agent-number"
-            type="text"
-            placeholder="Enter 11 digit number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Amount to Withdraw -->
-        <div class="mb-4">
-          <label for="withdraw-amount" class="font-medium opacity-70"
-            >Amount</label
-          >
-          <input
-            id="withdraw-amount"
-            type="text"
-            placeholder="Enter amount to withdraw"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Pin Number -->
-        <div class="mb-4">
-          <label class="font-medium opacity-70">Pin Number</label>
-          <input
-            type="text"
-            placeholder="Enter 4 digit pin number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Withdraw Button -->
-        <button
-          id="cash-out-btn"
-          type="submit"
-          class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
-        >
-          Withdraw Money
-        </button>
-      </form>
-    </div>
-
-    <!-- Transfer Money Container -->
-    <div id="transfer-money-container" class="max-w-lg w-4/5 mx-auto" hidden>
-      <h3 class="mb-3 font-semibold text-lg opacity-90">Transfer Money</h3>
-
-      <!-- Transfer Money Form -->
-      <form action="" class="bg-white p-8 rounded-3xl w-full">
-        <!-- User Account Number -->
-        <div class="mb-4">
-          <label for="user-account-number" class="font-medium opacity-70"
-            >User Account Number</label
-          >
-          <input
-            id="user-account-number"
-            type="text"
-            placeholder="Enter 11 digit number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Amount to Add -->
-        <div class="mb-4">
-          <label for="transfer-amount" class="font-medium opacity-70"
-            >Amount</label
-          >
-          <input
-            id="transfer-amount"
-            type="text"
-            placeholder="Enter amount to transfer"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Pin Number -->
-        <div class="mb-4">
-          <label class="font-medium opacity-70">Pin Number</label>
-          <input
-            type="text"
-            placeholder="Enter 4 digit pin number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Transfer Money Button -->
-        <button
-          id="transfer-money-btn"
-          type="submit"
-          class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
-        >
-          Add Money
-        </button>
-      </form>
-    </div>
-
-    <!-- Get Bonus -->
-    <div id="get-bonus-container" class="max-w-lg w-4/5 mx-auto" hidden>
-      <h3 class="mb-3 font-semibold text-lg opacity-90">Get Bonus</h3>
-
-      <!-- Get Bonus Form -->
-      <form action="" class="bg-white p-8 rounded-3xl w-full">
-        <!-- Coupon -->
-        <div class="mb-4">
-          <label class="font-medium opacity-70">Enter Bonus Coupon</label>
-          <input
-            type="text"
-            placeholder="Enter your coupon"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Get Bonus Button -->
-        <button
-          id="bonus-btn"
-          type="submit"
-          class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
-        >
-          Get Bonus
-        </button>
-      </form>
-    </div>
-
-    <!-- Pay Bill Container -->
-    <div id="pay-bill-container" class="max-w-lg w-4/5 mx-auto" hidden>
-      <h3 class="mb-3 font-semibold text-lg opacity-90">Pay Bill</h3>
-
-      <!-- Pay Bill Form -->
-      <form action="" class="bg-white p-8 rounded-3xl w-full">
-        <!-- Biller -->
-        <div class="mb-4">
-          <label for="pay" class="font-medium opacity-70">Select To Pay</label>
-          <select
-            id="pay"
-            class="select w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none font-light"
-            aria-label="Select To Pay"
-          >
-            <option disabled selected>Select To Pay</option>
-            <option>Gas Bill</option>
-            <option>Bank Deposit</option>
-            <option>Electricity Bill</option>
-          </select>
-        </div>
-
-        <!-- Enter account number -->
-        <div class="mb-4">
-          <label for="biller-account-number" class="font-medium opacity-70"
-            >Enter account number</label
-          >
-          <input
-            id="biller-account-number"
-            type="text"
-            placeholder="Enter account number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Amount to Pay -->
-        <div class="mb-4">
-          <label for="pay-amount" class="font-medium opacity-70"
-            >Amount to Pay</label
-          >
-          <input
-            id="pay-amount"
-            type="text"
-            placeholder="Add Amount to pay"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-
-        <!-- Pin Number -->
-        <div class="mb-4">
-          <label class="font-medium opacity-70">Pin Number</label>
-          <input
-            type="text"
-            placeholder="Enter 4 digit pin number"
-            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
-          />
-        </div>
-        <button
-          id="pay-bill-btn"
-          type="submit"
-          class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
-        >
-          Pay Now
-        </button>
-      </form>
+            Pay Now
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- Script -->
