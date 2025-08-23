@@ -4,8 +4,132 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Daisy UI CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <h1>this is home</h1>
+  <body class="font-[Outfit] text-[#080808] bg-[#F4F5F7] text-base min-h-dvh">
+    <div class="bg-white rounded-b-[28px]">
+      <!-- Navbar -->
+      <div class="border-b border-[#0808081a]">
+        <div
+          class="max-w-lg w-4/5 mx-auto flex justify-between items-center py-4"
+        >
+          <div class="flex items-center gap-2">
+            <div class="size-12">
+              <img src="./assets/Group.png" alt="" />
+            </div>
+            <div>
+              <h3 class="opacity-90 font-semibold text-lg">
+                $<span>45000</span>
+              </h3>
+              <span class="opacity-50 text-sm font-normal"
+                >Balance Available</span
+              >
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn bg-transparent rounded-lg px-3 py-2.5"
+          >
+            <i
+              class="fa-solid fa-arrow-up-from-bracket -rotate-90 text-[#666768]"
+            ></i>
+            <span class="opacity-50">Log Out</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="max-w-lg w-4/5 mx-auto pb-6">
+        <!-- Banner -->
+        <div class="my-6">
+          <h1 class="text-2xl font-bold mb-2.5">🔥 Welcome to Payooo!</h1>
+          <p class="opacity-50 font-normal">
+            Enjoy easy and convenient financial services with us. Cashout charge
+            is low and
+          </p>
+        </div>
+
+        <!-- Card Container -->
+        <div class="grid grid-cols-3 gap-4">
+          <!-- Add Money Card -->
+          <div
+            id="add-money-card"
+            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5"
+          >
+            <img src="./assets/wallet1.png" alt="" class="mx-auto" />
+            <h5 class="opacity-70 text-sm mt-2">Add Money</h5>
+          </div>
+
+          <!-- Cashout Card -->
+          <div
+            id="chashout-card"
+            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5"
+          >
+            <img src="./assets/send1.png" alt="" class="mx-auto" />
+            <h5 class="opacity-70 text-sm mt-2">Cashout</h5>
+          </div>
+
+          <!-- Transfer Money Card -->
+          <div
+            id="transfer-money-card"
+            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5"
+          >
+            <img src="./assets/money1.png" alt="" class="mx-auto" />
+            <h5 class="opacity-70 text-sm mt-2">Transfer Money</h5>
+          </div>
+
+          <!-- Get Bonus Card -->
+          <div
+            id="bonus-card"
+            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5"
+          >
+            <img src="./assets/bonus1.png" alt="" class="mx-auto" />
+            <h5 class="opacity-70 text-sm mt-2">Get Bonus</h5>
+          </div>
+
+          <!-- Pay Bill Card -->
+          <div
+            id="pay-bill-card"
+            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5"
+          >
+            <img src="./assets/purse1.png" alt="" class="mx-auto" />
+            <h5 class="opacity-70 text-sm mt-2">Pay Bill</h5>
+          </div>
+
+          <!-- Transactions Card -->
+          <div
+            id="transaction-card"
+            class="border border-[#0808081a] text-center rounded-xl px-2.5 py-5"
+          >
+            <img src="./assets/transaction1.png" alt="" class="mx-auto" />
+            <h5 class="opacity-70 text-sm mt-2">Transactions</h5>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
