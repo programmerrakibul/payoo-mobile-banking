@@ -9,6 +9,7 @@ const transferMoneyContainer = document.getElementById(
 const getBonusContainer = document.getElementById("get-bonus-container");
 const payBillContainer = document.getElementById("pay-bill-container");
 
+// Container Cards Array
 const cardIDArray = [
   "add-money-card",
   "chashout-card",
@@ -18,6 +19,7 @@ const cardIDArray = [
   "transaction-card",
 ];
 
+// Listener function for some events
 function colorEffects(e) {
   if (e.target === cardContainer) return;
 
@@ -31,6 +33,7 @@ function colorEffects(e) {
   });
 
   const card = e.target.closest("div");
+
   card.classList.replace("border-[#0808081a]", "border-[#0874F2]");
   card.classList.add("bg-[#0874f20d]");
   card.classList.add("text-[#0874F2]");
@@ -38,6 +41,7 @@ function colorEffects(e) {
   containers.forEach((container) => {
     container.hidden = true;
   });
+
   if (e.target.closest(`#${cardIDArray[0]}`)) {
     addMoneyContainer.hidden = false;
   } else if (e.target.closest(`#${cardIDArray[1]}`)) {
@@ -51,4 +55,5 @@ function colorEffects(e) {
   }
 }
 
+// Event Handler
 cardContainer.addEventListener("click", colorEffects);
