@@ -19,6 +19,9 @@ const cashOutBtn = getEl("cash-out-btn");
 // Money Transfer
 const transferBtn = getEl("transfer-money-btn");
 
+// Pay Bill
+const billBtn = getEl("pay-bill-btn");
+
 // Database Numbers
 const accNum = "01888419206";
 const myPin = "1234";
@@ -122,7 +125,17 @@ function validateData(accNum, amountStr, amount, pin) {
 // Converted main balance
 const mainBalance = input("main-balance", false, true);
 
-// Common function for add money, transfer money, pay bill
+// Common Function for add money and pay bill
+function validateOption(name, str) {
+  if (name.match(str)) {
+    alert(`Plese ${str}!`);
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Common function for cashout, transfer money, pay bill
 function sub(number, inputVal, input, pin) {
   const validation = validateData(number, inputVal, input, pin);
 
@@ -149,17 +162,17 @@ function addMoney(e) {
   const amount = input("add-amount", false, false);
   const pinVal = input("add-pin-number", true, false);
 
-  if (bankName.match("Select Bank")) {
-    alert("Plese select a bank!");
-    return;
-  }
+  const options = validateOption(bankName, "Select Bank");
 
-  const validation = validateData(accNumNum, amountVal, amount, pinVal);
-  if (validation === false) {
-    if (accNum === accNumNum && myPin === pinVal) {
-      mainBalanceEl.textContent = mainBalance + amount;
-    } else {
-      return alert("Invalid Credential!");
+  if (options) {
+    const validation = validateData(accNumNum, amountVal, amount, pinVal);
+
+    if (validation === false) {
+      if (accNum === accNumNum && myPin === pinVal) {
+        mainBalanceEl.textContent = mainBalance + amount;
+      } else {
+        return alert("Invalid Credential!");
+      }
     }
   }
 }
@@ -188,6 +201,24 @@ function moneyTransfer(e) {
   sub(userAccNum, amountVal, amount, pinVal);
 }
 
+//* Pay Bill Function
+function payBill(e) {
+  e.preventDefault();
+
+  const billerName = input("pay", true, false);
+  const billerNum = input("user-account-number", true, false);
+  const amountVal = input("transfer-amount", true, false);
+  const amount = input("transfer-amount", false, false);
+  const pinVal = input("transfer-pin", true, false);
+
+  const options = validateOption(billerName, "Select To Pay");
+  if (options) {
+    sub(billerNum, amountVal, amount, pinVal);
+  }
+
+  // sub(billerNum, amountVal, amount, pinVal);
+}
+
 // Event Handlers
 // Cards
 cardBtns.addEventListener("click", colorEffects);
@@ -200,6 +231,9 @@ cashOutBtn.addEventListener("click", chashOutMoney);
 
 // Cashout Money
 transferBtn.addEventListener("click", moneyTransfer);
+
+// Cashout Money
+billBtn.addEventListener("click", payBill);
 
 // Logout
 logOutBtn.addEventListener("click", () => {
