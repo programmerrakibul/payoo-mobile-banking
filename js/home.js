@@ -89,18 +89,15 @@ function colorEffects(e) {
 }
 
 // Function for input validation
-function validateData(bank, bankAcc, amountStr, amount, pin) {
-  if (bank.match("Select Bank")) {
-    alert("Plese select a bank!");
+function validateData(accNum, amountStr, amount, pin) {
+  if (accNum.length === 0) {
+    alert("Plese enter Account Number!");
     return;
-  } else if (bankAcc.length === 0) {
-    alert("Plese enter Bank Account Number!");
+  } else if (accNum.length !== 11) {
+    alert("Account Number must be 11 digit!");
     return;
-  } else if (bankAcc.length !== 11) {
-    alert("Bank Account Number must be 11 digit!");
-    return;
-  } else if (!checkNum(bankAcc)) {
-    alert("Please provide a valid Bank Account Number!");
+  } else if (!checkNum(accNum)) {
+    alert("Please provide a valid Account Number!");
     return;
   } else if (amountStr.length === 0) {
     alert("Plese enter amount!");
@@ -127,20 +124,19 @@ function addMoney(e) {
   e.preventDefault();
 
   const bankName = input("banks", true, false);
-  const bankAccNum = input("add-account-number", true, false);
+  const accNumNum = input("add-account-number", true, false);
   const amountVal = input("add-amount", true, false);
   const amount = input("add-amount", false, false);
   const pinVal = input("add-pin-number", true, false);
 
-  const validation = validateData(
-    bankName,
-    bankAccNum,
-    amountVal,
-    amount,
-    pinVal
-  );
+  if (bankName.match("Select Bank")) {
+    alert("Plese select a bank!");
+    return;
+  }
+
+  const validation = validateData(accNumNum, amountVal, amount, pinVal);
   if (validation === false) {
-    if (accNum === bankAccNum && myPin === pinVal) {
+    if (accNum === accNumNum && myPin === pinVal) {
       mainBalanceEl.textContent = mainBalance + amount;
     } else {
       return alert("Invalid Credential!");
@@ -152,16 +148,23 @@ function addMoney(e) {
 function chashOutMoney(e) {
   e.preventDefault();
 
+  const agentAccNum = input("agent-number", true, false);
   const amountVal = input("withdraw-amount", true, false);
   const amount = input("withdraw-amount", false, false);
   const pinVal = input("cash-out-pin", true, false);
 
-  validateData(amountVal, amount, pinVal);
+  const validation = validateData(agentAccNum, amountVal, amount, pinVal);
 
-  if (myPin === pinVal) {
-    mainBalanceEl.textContent = mainBalance - amount;
-  } else {
-    return alert("Invalid Credential!");
+  if (validation === false) {
+    if (accNum === agentAccNum && myPin === pinVal) {
+      if (amount > mainBalance) {
+        return alert("Your balance is too low.");
+      } else {
+        mainBalanceEl.textContent = mainBalance - amount;
+      }
+    } else {
+      return alert("Invalid Credential!");
+    }
   }
 }
 
@@ -172,7 +175,7 @@ cardBtns.addEventListener("click", colorEffects);
 // Add Money
 addBtn.addEventListener("click", addMoney);
 
-// Add Money
+// Cashout Money
 cashOutBtn.addEventListener("click", chashOutMoney);
 
 // Logout
