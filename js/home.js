@@ -1,50 +1,68 @@
+// Function to get IDs
+function getEl(id) {
+  const el = document.getElementById(id);
+  return el;
+}
+
 // DOM Selectors
-const logOutBtn = document.getElementById("log-out-btn");
-const cardContainer = document.getElementById("card-container");
-const cardContainers = document.getElementById("card-containers").children;
-const addMoneyContainer = document.getElementById("add-money-container");
-const cashoutContainer = document.getElementById("cash-out-container");
-const transferMoneyContainer = document.getElementById(
-  "transfer-money-container"
-);
-const getBonusContainer = document.getElementById("get-bonus-container");
-const payBillContainer = document.getElementById("pay-bill-container");
-const mainBalanceEl = document.getElementById("main-balance");
-const mainBalance = parseInt(mainBalanceEl.textContent);
-const myPin = "1234";
+const logOutBtn = getEl("log-out-btn");
+const cardBtns = getEl("card-container");
+const formContainers = getEl("card-containers").children;
+const mainBalanceEl = getEl("main-balance");
 
 // Add Money
-// const addAccNumber = document.getElementById("add-account-number");
-const addAmount = document.getElementById("add-amount");
-const addPin = document.getElementById("add-pin-number");
-const addBtn = document.getElementById("add-money-btn");
+const addBtn = getEl("add-money-btn");
 
 // Casho Out
-const withdrawAmount = document.getElementById("withdraw-amount");
-const cashOutPin = document.getElementById("cash-out-pin");
-const cashOutBtn = document.getElementById("cash-out-btn");
+const cashOutBtn = getEl("cash-out-btn");
 
-// Container Cards Array
-const cardIDArray = [
-  "add-money-card",
-  "chashout-card",
-  "transfer-money-card",
-  "bonus-card",
-  "pay-bill-card",
-  "transaction-card",
-];
+// Database Numbers
+const accNum = "01888419206";
+const myPin = "1234";
+
+// Function for input values. if input value don't have digits then return an alert
+function checkNum(val) {
+  const digit = /\d/g;
+  const isDigit = digit.test(val);
+  return isDigit;
+}
+
+// Function for convert input values
+function input(id, needVal, isNormalTag) {
+  const input = getEl(id);
+  let inputVal;
+
+  // Checking tag is input type or not
+  if (isNormalTag) {
+    inputVal = input.textContent;
+  } else {
+    inputVal = input.value;
+  }
+
+  // Converting value from string to integer
+  if (!needVal) {
+    const inputNum = parseInt(inputVal);
+    return inputNum;
+  }
+
+  return inputVal;
+}
 
 // Listener function for some events
 function colorEffects(e) {
-  if (e.target === cardContainer) return;
+  if (e.target === cardBtns) return;
 
-  const cards = Array.from(cardContainer.children);
-  const containers = Array.from(cardContainers);
+  const buttons = Array.from(cardBtns.children);
+  const containers = Array.from(formContainers);
+  const cardIDArray = [];
 
-  cards.forEach((item) => {
-    item.classList.remove("bg-[#0874f20d]");
-    item.classList.remove("text-[#0874F2]");
-    item.classList.replace("border-[#0874F2]", "border-[#0808081a]");
+  buttons.forEach((btn) => {
+    btn.classList.remove("bg-[#0874f20d]");
+    btn.classList.remove("text-[#0874F2]");
+    btn.classList.replace("border-[#0874F2]", "border-[#0808081a]");
+
+    const ID = btn.getAttribute("id");
+    cardIDArray.push(ID);
   });
 
   const card = e.target.closest("div");
@@ -58,74 +76,106 @@ function colorEffects(e) {
   });
 
   if (e.target.closest(`#${cardIDArray[0]}`)) {
-    addMoneyContainer.hidden = false;
+    containers[0].hidden = false;
   } else if (e.target.closest(`#${cardIDArray[1]}`)) {
-    cashoutContainer.hidden = false;
+    containers[1].hidden = false;
   } else if (e.target.closest(`#${cardIDArray[2]}`)) {
-    transferMoneyContainer.hidden = false;
+    containers[2].hidden = false;
   } else if (e.target.closest(`#${cardIDArray[3]}`)) {
-    getBonusContainer.hidden = false;
+    containers[3].hidden = false;
   } else if (e.target.closest(`#${cardIDArray[4]}`)) {
-    payBillContainer.hidden = false;
+    containers[4].hidden = false;
   }
 }
 
 // Function for input validation
-function validateData(amountStr, amount, pin) {
-  if (amountStr === "") {
-    return alert("Plese enter amount!");
+function validateData(bank, bankAcc, amountStr, amount, pin) {
+  if (bank.match("Select Bank")) {
+    alert("Plese select a bank!");
+    return;
+  } else if (bankAcc.length === 0) {
+    alert("Plese enter Bank Account Number!");
+    return;
+  } else if (bankAcc.length !== 11) {
+    alert("Bank Account Number must be 11 digit!");
+    return;
+  } else if (!checkNum(bankAcc)) {
+    alert("Please provide a valid Bank Account Number!");
+    return;
+  } else if (amountStr.length === 0) {
+    alert("Plese enter amount!");
+    return;
   } else if (amount <= 0) {
-    return alert("Plese enter valid amount!");
+    alert("Plese enter valid amount!");
+    return;
   } else if (pin.length === 0) {
-    return alert("Please enter your pin");
+    alert("Please enter your pin");
+    return;
   } else if (pin.length !== 4) {
-    return alert("Pin Number Must be 4 Digit");
+    alert("Pin Number Must be 4 Digit");
+    return;
+  } else {
+    return false;
   }
 }
 
-// Add Money Function
+// Converted main balance
+const mainBalance = input("main-balance", false, true);
+
+//* Add Money Function
 function addMoney(e) {
   e.preventDefault();
 
-  const amountVal = parseInt(addAmount.value);
-  const pinVal = addPin.value;
+  const bankName = input("banks", true, false);
+  const bankAccNum = input("add-account-number", true, false);
+  const amountVal = input("add-amount", true, false);
+  const amount = input("add-amount", false, false);
+  const pinVal = input("add-pin-number", true, false);
 
-  validateData(addAmount.value, amountVal, pinVal);
-
-  if (myPin === pinVal) {
-    mainBalanceEl.textContent = mainBalance + amountVal;
-    // console.log(mainBalance + amountVal);
-  } else {
-    return alert("Invalid Credential!");
+  const validation = validateData(
+    bankName,
+    bankAccNum,
+    amountVal,
+    amount,
+    pinVal
+  );
+  if (validation === false) {
+    if (accNum === bankAccNum && myPin === pinVal) {
+      mainBalanceEl.textContent = mainBalance + amount;
+    } else {
+      return alert("Invalid Credential!");
+    }
   }
 }
 
-// Cash Out Function
+//* Cash Out Function
 function chashOutMoney(e) {
   e.preventDefault();
 
-  const amountVal = parseInt(withdrawAmount.value);
-  const pinVal = cashOutPin.value;
+  const amountVal = input("withdraw-amount", true, false);
+  const amount = input("withdraw-amount", false, false);
+  const pinVal = input("cash-out-pin", true, false);
 
-  validateData(withdrawAmount.value, amountVal, pinVal);
+  validateData(amountVal, amount, pinVal);
 
   if (myPin === pinVal) {
-    mainBalanceEl.textContent = mainBalance - amountVal;
+    mainBalanceEl.textContent = mainBalance - amount;
   } else {
     return alert("Invalid Credential!");
   }
 }
 
-// Event Handler
-cardContainer.addEventListener("click", colorEffects);
+// Event Handlers
+// Cards
+cardBtns.addEventListener("click", colorEffects);
 
-// Add Money Event Handler
+// Add Money
 addBtn.addEventListener("click", addMoney);
 
-// Add Money Event Handler
+// Add Money
 cashOutBtn.addEventListener("click", chashOutMoney);
 
-// Logout Listener
+// Logout
 logOutBtn.addEventListener("click", () => {
   location.href = "./index.html";
 });
