@@ -5,22 +5,9 @@ function getEl(id) {
 }
 
 // DOM Selectors
-const logOutBtn = getEl("log-out-btn");
 const cardBtns = getEl("card-container");
 const formContainers = getEl("card-containers").children;
 const mainBalanceEl = getEl("main-balance");
-
-// Add Money
-const addBtn = getEl("add-money-btn");
-
-// Cash Out
-const cashOutBtn = getEl("cash-out-btn");
-
-// Money Transfer
-const transferBtn = getEl("transfer-money-btn");
-
-// Pay Bill
-const billBtn = getEl("pay-bill-btn");
 
 // Database Numbers
 const accNum = "01888419206";
@@ -219,23 +206,20 @@ function payBill(e) {
   // sub(billerNum, amountVal, amount, pinVal);
 }
 
-// Event Handlers
-// Cards
-cardBtns.addEventListener("click", colorEffects);
-
-// Add Money
-addBtn.addEventListener("click", addMoney);
-
-// Cashout Money
-cashOutBtn.addEventListener("click", chashOutMoney);
-
-// Cashout Money
-transferBtn.addEventListener("click", moneyTransfer);
-
-// Cashout Money
-billBtn.addEventListener("click", payBill);
-
-// Logout
-logOutBtn.addEventListener("click", () => {
+// Logout Function
+function logOut() {
   location.href = "./index.html";
-});
+}
+
+// Function for Event Listeners
+function click(id, func) {
+  const el = getEl(id);
+  el.addEventListener("click", func);
+}
+
+click("card-container", colorEffects);
+click("add-money-btn", addMoney);
+click("cash-out-btn", chashOutMoney);
+click("transfer-money-btn", moneyTransfer);
+click("pay-bill-btn", payBill);
+click("log-out-btn", logOut);
