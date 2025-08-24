@@ -193,10 +193,10 @@ function payBill(e) {
   e.preventDefault();
 
   const billerName = input("pay", true, false);
-  const billerNum = input("user-account-number", true, false);
-  const amountVal = input("transfer-amount", true, false);
-  const amount = input("transfer-amount", false, false);
-  const pinVal = input("transfer-pin", true, false);
+  const billerNum = input("biller-account-number", true, false);
+  const amountVal = input("pay-amount", true, false);
+  const amount = input("pay-amount", false, false);
+  const pinVal = input("pay-bill-pin", true, false);
 
   const options = validateOption(billerName, "Select To Pay");
   if (options) {
