@@ -13,8 +13,11 @@ const mainBalanceEl = getEl("main-balance");
 // Add Money
 const addBtn = getEl("add-money-btn");
 
-// Casho Out
+// Cash Out
 const cashOutBtn = getEl("cash-out-btn");
+
+// Money Transfer
+const transferBtn = getEl("transfer-money-btn");
 
 // Database Numbers
 const accNum = "01888419206";
@@ -119,6 +122,23 @@ function validateData(accNum, amountStr, amount, pin) {
 // Converted main balance
 const mainBalance = input("main-balance", false, true);
 
+// Common function for add money, transfer money, pay bill
+function sub(number, inputVal, input, pin) {
+  const validation = validateData(number, inputVal, input, pin);
+
+  if (validation === false) {
+    if (accNum === number && myPin === pin) {
+      if (input > mainBalance) {
+        return alert("Your balance is too low.");
+      } else {
+        mainBalanceEl.textContent = mainBalance - input;
+      }
+    } else {
+      return alert("Invalid Credential!");
+    }
+  }
+}
+
 //* Add Money Function
 function addMoney(e) {
   e.preventDefault();
@@ -153,19 +173,19 @@ function chashOutMoney(e) {
   const amount = input("withdraw-amount", false, false);
   const pinVal = input("cash-out-pin", true, false);
 
-  const validation = validateData(agentAccNum, amountVal, amount, pinVal);
+  sub(agentAccNum, amountVal, amount, pinVal);
+}
 
-  if (validation === false) {
-    if (accNum === agentAccNum && myPin === pinVal) {
-      if (amount > mainBalance) {
-        return alert("Your balance is too low.");
-      } else {
-        mainBalanceEl.textContent = mainBalance - amount;
-      }
-    } else {
-      return alert("Invalid Credential!");
-    }
-  }
+//* Money Transfer Function
+function moneyTransfer(e) {
+  e.preventDefault();
+
+  const userAccNum = input("user-account-number", true, false);
+  const amountVal = input("transfer-amount", true, false);
+  const amount = input("transfer-amount", false, false);
+  const pinVal = input("transfer-pin", true, false);
+
+  sub(userAccNum, amountVal, amount, pinVal);
 }
 
 // Event Handlers
@@ -177,6 +197,9 @@ addBtn.addEventListener("click", addMoney);
 
 // Cashout Money
 cashOutBtn.addEventListener("click", chashOutMoney);
+
+// Cashout Money
+transferBtn.addEventListener("click", moneyTransfer);
 
 // Logout
 logOutBtn.addEventListener("click", () => {
