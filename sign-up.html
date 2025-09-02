@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Daisy UI CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="font-[Outfit] text-[#080808] bg-[#F4F5F7] text-base">
+    <div
+      class="max-w-lg w-4/5 mx-auto min-h-dvh flex flex-col justify-center items-center"
+    >
+      <!-- Background div -->
+      <div
+        class="bg-[url(./assets/bg.png)] bg-no-repeat bg-cover w-4/5 mx-auto h-[130px] flex justify-center items-center"
+      >
+        <img src="./assets/Group.png" alt="" class="size-[75px]" />
+      </div>
+
+      <!-- Login Form -->
+      <form action="" class="bg-white p-8 rounded-3xl w-full">
+        <!-- Name -->
+        <div class="mb-4">
+          <label for="name" class="font-medium">Name</label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter your Full Name"
+            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label for="email" class="font-medium">Email</label>
+          <input
+            id="email"
+            type="text"
+            placeholder="Enter your Email"
+            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+          />
+        </div>
+
+        <!-- Mobile Number -->
+        <div class="mb-4">
+          <label for="mobile-number" class="font-medium">Number</label>
+          <input
+            id="mobile-number"
+            type="text"
+            placeholder="Enter your number"
+            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+          />
+        </div>
+
+        <!-- Pin Number -->
+        <div class="mb-4">
+          <label for="pin-number" class="font-medium">4 Digit Pin</label>
+          <input
+            id="pin-number"
+            type="password"
+            placeholder="Enter 4 Digit Pin"
+            class="input input-md w-full mt-1 rounded-[32px] bg-[#F4F5F7] border-none py-4 px-5"
+          />
+        </div>
+
+        <!-- Action Button -->
+        <button
+          id="login-btn"
+          type="submit"
+          class="btn w-full rounded-[32px] border-none bg-[#0874F2] text-white text-xl font-medium px-5 py-[14px]"
+        >
+          SignUp
+        </button>
+        <div>
+          <span class="block text-center mt-3 text-gray-400 text-base"
+            >Already have an account?
+            <a href="./index.html" class="hover:underline text-gray-700"
+              >LogIn</a
+            ></span
+          >
+        </div>
+      </form>
+    </div>
+
+    <!-- Script -->
+    <script src="./js/login.js"></script>
+  </body>
+</html>
