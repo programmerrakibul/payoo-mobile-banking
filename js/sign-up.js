@@ -91,5 +91,3 @@ function logIn(e) {
 
 // Event handler for login button
 signUpButton.addEventListener("click", logIn);
-
-const dataBase = JSON.parse(localStorage.getItem("userAuth")) || [];
