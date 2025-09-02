@@ -1,7 +1,5 @@
 // DOM Selectors
 const btnLogin = document.getElementById("login-btn");
-const myNum = "01888419206";
-const myPin = "1234";
 
 // Function for convert input values
 function input(id, needVal) {
@@ -26,6 +24,8 @@ function checkNum(val) {
 function logIn(e) {
   e.preventDefault();
 
+  const dataBase = JSON.parse(localStorage.getItem("userAuth")) || [];
+
   const mobileVal = input("mobile-number", true);
   const pinVal = input("pin-number", true);
 
@@ -42,21 +42,23 @@ function logIn(e) {
   }
 
   if (mobileVal.length !== 11) {
-    console.log(mobileVal.length);
-
     return alert("Mobile number must be 11 digit");
   } else if (pinVal.length !== 4) {
-    console.log(pinVal.length);
-
     return alert("Pin number must be 4 digit");
   }
 
-  if (myNum === mobileVal && myPin === pinVal) {
-    window.location.href = "./home.html";
-    return;
-  } else {
+  if (dataBase.length === 0) {
     return alert("Wrong credentials");
   }
+
+  dataBase.forEach((user) => {
+    if (mobileVal === user.number && pinVal === user.pin) {
+      window.location.href = "./home.html";
+      return;
+    } else {
+      return alert("Wrong credentials");
+    }
+  });
 }
 
 // Event handler for login button
